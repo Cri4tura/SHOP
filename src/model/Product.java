@@ -38,8 +38,6 @@ public class Product {
 		this.name = name;
 	}
 
-	
-
 	public Amount getPublicPrice() {
 		return publicPrice;
 	}
