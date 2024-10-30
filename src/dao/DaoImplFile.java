@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import model.Amount;
 import model.Employee;
@@ -21,8 +22,8 @@ public class DaoImplFile implements Dao {
 	public void connect() {
 		// TODO Auto-generated method stub
 
-	}
-
+	}	
+	
 	@Override
 	public void disconnect() {
 		// TODO Auto-generated method stub

@@ -34,7 +34,7 @@ public class Shop {
 	public Shop() {
 		inventory = new ArrayList<Product>();
 		sales = new ArrayList<Sale>();
-		dao = new DaoImplFile();
+		dao = new DaoImplXml();
 	}
 	
 	

@@ -87,14 +87,4 @@ public class Product {
 		return "Product [name=" + name + ", publicPrice=" + publicPrice + ", wholesalerPrice=" + wholesalerPrice
 				+ ", available=" + available + ", stock=" + stock + "]";
 	}
-
-	
-	
-	
-	
-	
-
-    
-
-    
 }
