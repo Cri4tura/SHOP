@@ -50,7 +50,7 @@ public class Shop {
 	}
 
 
-
+	
 	public ArrayList<Product> getInventory() {
 		return inventory;
 	}
@@ -211,16 +211,14 @@ public class Shop {
 //		addProduct(new Product("Hamburguesa", new Amount(30.00), true, 30));
 //		addProduct(new Product("Fresa", new Amount(5.00), true, 20));
 		// now read from file
-		this.readInventory();	   
+		this.setInventory(dao.getInventory());  
 	}
 
 	/**
 	 * read inventory from file
 	 */
 	public boolean readInventory() {
-		this.setInventory(dao.getInventory());
-		
-		return true;		
+		return dao.writeInventory(inventory);		
 	}
 	
 	/**
@@ -362,7 +360,7 @@ public class Shop {
 
 			if (product != null && product.isAvailable()) {
 				productAvailable = true;
-				totalAmount.setValue(totalAmount.getValue() + product.getPublicPrice().getValue());
+				totalAmount.setValue(totalAmount.getValue() + product.getPublicPrice());
 				product.setStock(product.getStock() - 1);
 				shoppingCart.add(product);
 				numberShopping++;

@@ -3,26 +3,27 @@ package model;
 public class Product {
 	private int id;
     private String name;
-    private Amount publicPrice;
-    private Amount wholesalerPrice;
+    private double publicPrice;
+    private double wholesalerPrice;
     private boolean available;
     private int stock;
     private static int totalProducts;
     
     public final static double EXPIRATION_RATE=0.60;
     
-	public Product(String name, Amount wholesalerPrice, boolean available, int stock) {
+    public Product(String name, Amount amount, boolean available, int stock) {
 		super();
 		this.id = totalProducts+1;
 		this.name = name;
-		this.wholesalerPrice = wholesalerPrice;
-		this.publicPrice = new Amount(wholesalerPrice.getValue() * 2);
+		//add the publicPrice [CORRECTION]
+		this.publicPrice = amount.getValue() * 2;
+		this.wholesalerPrice = amount.getValue();
 		this.available = available;
 		this.stock = stock;
 		totalProducts++;
 	}
 
-	public int getId() {
+    public int getId() {
 		return id;
 	}
 
@@ -38,19 +39,19 @@ public class Product {
 		this.name = name;
 	}
 
-	public Amount getPublicPrice() {
+	public double getPublicPrice() {
 		return publicPrice;
 	}
 
-	public void setPublicPrice(Amount publicPrice) {
+	public void setPublicPrice(double publicPrice) {
 		this.publicPrice = publicPrice;
 	}
 
-	public Amount getWholesalerPrice() {
+	public double getWholesalerPrice() {
 		return wholesalerPrice;
 	}
 
-	public void setWholesalerPrice(Amount wholesalerPrice) {
+	public void setWholesalerPrice(double wholesalerPrice) {
 		this.wholesalerPrice = wholesalerPrice;
 	}
 
@@ -65,7 +66,7 @@ public class Product {
 	public int getStock() {
 		return stock;
 	}
-
+	
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
@@ -79,8 +80,9 @@ public class Product {
 	}
 	
 	public void expire() {
-		this.publicPrice.setValue(this.getPublicPrice().getValue()*EXPIRATION_RATE); ;
+		this.publicPrice = this.getPublicPrice()*EXPIRATION_RATE;
 	}
+
 
 	@Override
 	public String toString() {
