@@ -45,32 +45,31 @@ public class DomWriter {
 		boolean generated = false;
 
 		Element products = document.createElement("products");
-		products.setAttribute("total", "" + inventory.size());
+		products.setAttribute("total", String.valueOf(inventory.size()));
 		document.appendChild(products);
 
-		for (int i = 0; i < inventory.size(); i++) {
-			Element product = document.createElement("product");
-			product.setAttribute("id", "" + (i + 1));
-			products.appendChild(product);
+		for (Product productInventory : inventory) {
+            Element product = document.createElement("product");
+            product.setAttribute("id", String.valueOf(productInventory.getId()));
+            products.appendChild(product);
 
-			Element name = document.createElement("name");
-			name.setTextContent(inventory.get(i).getName());
-			product.appendChild(name);
-			
-			Element price = document.createElement("price");
-			price.setAttribute("currency", "€");
-			price.setTextContent("" + inventory.get(i).getWholesalerPrice());
-			product.appendChild(price);
+            Element name = document.createElement("name");
+            name.setTextContent(productInventory.getName());
+            product.appendChild(name);
 
-			Element stock = document.createElement("stock");
-			stock.setTextContent("" + inventory.get(i).getStock());
-			product.appendChild(stock);
+            Element price = document.createElement("price");
+            price.setAttribute("currency", "€");
+            price.setTextContent("" + productInventory.getWholesalerPrice());
+            product.appendChild(price);
 
-		}
+            Element stock = document.createElement("stock");
+            stock.setTextContent("" + productInventory.getStock());
+            product.appendChild(stock);
+        }
 
-		generated = generateXml();
-		return generated;
-	}
+        generated = generateXml();
+        return generated;
+    }
 
 	private boolean generateXml() {
 		boolean generated = false;
