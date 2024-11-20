@@ -30,10 +30,10 @@ public class SaxReader extends DefaultHandler {
 			String productName = attributes.getValue("name");
 			product = new Product(productName, new Amount(0), true, 0);
 			break;
-		case "WholesalerPrise":
+		case "wholesalerPrise":
 			buffer.setLength(0);
 			break;
-		case "Stock":
+		case "stock":
 			buffer.setLength(0);
 			break;
 		}
@@ -42,12 +42,12 @@ public class SaxReader extends DefaultHandler {
 	@Override
 	public void endElement(String uri, String localName, String qName) throws SAXException {
 		switch (qName) {
-		case "WholesalerPrise":
+		case "wholesalerPrise":
 			double wholesalerPrice = Double.parseDouble(buffer.toString());
 			product.setWholesalerPrice(wholesalerPrice);
 			product.setPublicPrice(wholesalerPrice * 2);
 			break;
-		case "Stock":
+		case "stock":
 			int stock = Integer.parseInt(buffer.toString());
 			product.setStock(stock);
 			product.setAvailable(stock > 0);
