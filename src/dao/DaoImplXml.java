@@ -57,11 +57,11 @@ public class DaoImplXml implements Dao {
 
 	@Override
 	public boolean writeInventory(ArrayList<Product> products) {
-		boolean generated = false;
+	    boolean generated = false;
 
-		DomWriter domWriter = new DomWriter();
-		generated = domWriter.generateDocument(inventory);
-		return generated;
+	    DomWriter domWriter = new DomWriter();
+	    generated = domWriter.generateDocument(products);
+	    return generated;
 	}
 
 	@Override
