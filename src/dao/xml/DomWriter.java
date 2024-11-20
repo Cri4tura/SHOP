@@ -56,7 +56,7 @@ public class DomWriter {
 			Element name = document.createElement("name");
 			name.setTextContent(inventory.get(i).getName());
 			product.appendChild(name);
-
+			
 			Element price = document.createElement("price");
 			price.setAttribute("currency", "€");
 			price.setTextContent("" + inventory.get(i).getWholesalerPrice());

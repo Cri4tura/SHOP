@@ -15,7 +15,6 @@ public class Product {
 		super();
 		this.id = totalProducts+1;
 		this.name = name;
-		//add the publicPrice [CORRECTION]
 		this.publicPrice = amount.getValue() * 2;
 		this.wholesalerPrice = amount.getValue();
 		this.available = available;
