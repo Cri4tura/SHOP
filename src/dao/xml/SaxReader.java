@@ -52,8 +52,8 @@ public class SaxReader extends DefaultHandler {
             case "wholesalerPrice":
                 double wholesalerPrice = Double.parseDouble(buffer.toString().trim()); 
                 Amount amount = new Amount(wholesalerPrice); 
-                product.setWholesalerPrice(amount.getValue()); 
-                product.setPublicPrice(amount.getValue() * 2); 
+//                product.setWholesalerPrice(amount.getValue()); 
+//               product.setPublicPrice(amount.getValue() * 2); 
                 break;
             case "stock":
                 int stock = Integer.parseInt(buffer.toString().trim()); 
