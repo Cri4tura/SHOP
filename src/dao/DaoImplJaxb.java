@@ -20,15 +20,13 @@ public class DaoImplJaxb implements Dao {
 	public ArrayList<Product> getInventory() {
 		JaxbUnMarshaller unMarshaller = new JaxbUnMarshaller();
 
-		// Obtenemos el ProductList desde JaxbUnMarshaller
 		ProductList productList = unMarshaller.init();
 
-		// Si productList es null, significa que hubo un problema al deserializar
 		if (productList == null) {
 			return null;
 		}
 
-		// Convertimos el ProductList a un ArrayList<Product> y lo retornamos
+		// ProductList a un ArrayList<Product>
 		return new ArrayList<>(productList.getProducts());
 	}
 
@@ -44,11 +42,11 @@ public class DaoImplJaxb implements Dao {
 			// Serializar el ProductList en un archivo XML
 			jaxbMarshaller.init(productList); // Llamamos a init() de JaxbMarshaller para serializar el objeto
 
-			return true; // Si la serialización fue exitosa, devolvemos true
+			return true; 
 
 		} catch (Exception e) {
-			e.printStackTrace(); // Si ocurre algún error, lo imprimimos
-			return false; // Devolvemos false si hay un error
+			e.printStackTrace(); 
+			return false; 
 		}
 	}
 
