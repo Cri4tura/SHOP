@@ -19,18 +19,24 @@ public class JaxbUnMarshaller {
 
 			Unmarshaller unmarshaller = context.createUnmarshaller();
 
-			System.out.println("Unmarshalling...");
-
 			// Deserializar el archivo inputInventory.xml a un objeto ProductList
-			productList = (ProductList) unmarshaller.unmarshal(new File("xml/inputInventory.xml"));
+			productList = (ProductList) unmarshaller.unmarshal(new File("jaxb/inputInventory.xml"));
+
+			System.out.println(" ");
+			System.out.println("Unmarshalling...");
+			System.out.println(" ");
+			System.out.println("Cargando inventario... ");
+
+			for (Product products : productList.getProducts()) {
+				System.out.println(products);
+			}
+
 		} catch (JAXBException e) {
+			System.out.println(" ");
+		    System.err.println("Error unmarshalling...");
 			e.printStackTrace();
 		}
-		System.out.println("Inventario cargado: ");
-		for(Product products : productList.getProducts()) {
-			
-			System.out.println(products);
-		}
+
 		return productList;
 	}
 }

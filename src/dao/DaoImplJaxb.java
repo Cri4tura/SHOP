@@ -33,16 +33,12 @@ public class DaoImplJaxb implements Dao {
 	@Override
 	public boolean writeInventory(ArrayList<Product> products) {
 		try {
-			// Convertir el ArrayList<Product> en un ProductList
 			ProductList productList = new ProductList(products);
 
-			// Crear una instancia de JaxbMarshaller para serializar el ProductList
 			JaxbMarshaller jaxbMarshaller = new JaxbMarshaller();
 
 			// Serializar el ProductList en un archivo XML
-			jaxbMarshaller.init(productList); // Llamamos a init() de JaxbMarshaller para serializar el objeto
-
-			return true; 
+			return jaxbMarshaller.init(productList); 
 
 		} catch (Exception e) {
 			e.printStackTrace(); 
