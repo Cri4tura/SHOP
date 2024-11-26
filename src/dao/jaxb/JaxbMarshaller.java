@@ -15,13 +15,12 @@ public class JaxbMarshaller {
             // Crear contexto JAXB para ProductList
             JAXBContext context = JAXBContext.newInstance(ProductList.class);
             Marshaller marshaller = context.createMarshaller();
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true); // Salida legible
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
             System.out.println("Marshalling...");
 
-            // Generar el nombre del archivo con la fecha actual
             String date = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-            String filename = "files/inventory_" + date + ".xml";
+            String filename = "xml/inventory_" + date + ".xml";
 
             // Serializar el objeto ProductList en un archivo XML
             marshaller.marshal(products, new File(filename));

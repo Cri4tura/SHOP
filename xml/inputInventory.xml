@@ -14,6 +14,6 @@
 	</product>
 	<product id="4" name="Fresa">
 		<wholesalerPrice currency="Euro">5.00</wholesalerPrice>
-		<stock>20</stock>
+		<stock>0</stock>
 	</product>
 </products>

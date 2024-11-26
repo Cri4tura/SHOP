@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlValue;
 
 @XmlType(propOrder = { "value", "currency" })
 public class Amount {
@@ -26,11 +27,11 @@ public class Amount {
 	}
 
 	@XmlAttribute(name = "currency")
-	public String getCurrency() { // Para ver qué valor se está devolviendo
+	public String getCurrency() { 
 	    return currency;
 	}
 
-
+	@XmlValue
 	public double getValue() {
 		return value;
 	}

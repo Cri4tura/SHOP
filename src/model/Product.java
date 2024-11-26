@@ -18,7 +18,6 @@ public class Product {
 
 	public final static double EXPIRATION_RATE = 0.60;
 
-	// Constructor vacío para JAXB
 	public Product() {
 	}
 
@@ -36,6 +35,7 @@ public class Product {
 
 	public void setWholesalerPrice(Amount wholesalerPrice) {
 		this.wholesalerPrice = wholesalerPrice;
+		this.publicPrice = new Amount(wholesalerPrice.getValue() * 2); // publicPrice dependerá del wholesalerPrice
 	}
 
 	public void setAvailable(boolean available) {
@@ -44,6 +44,7 @@ public class Product {
 
 	public void setStock(int stock) {
 		this.stock = stock;
+		this.available = stock > 0; // available dependerá de la cantidad de stock del producto
 	}
 
 	public Product(String name, Amount amount, boolean available, int stock) {
@@ -97,7 +98,7 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [ID=" + id + ", name=" + name + ", publicPrice=" + publicPrice + ", wholesalerPrice="
-				+ wholesalerPrice + ", available=" + available + ", stock=" + stock + "]";
+		return "Product [ID=" + id + ", name=" + name + ", wholesalerPrice=" + wholesalerPrice + ", publicPrice="
+				+ publicPrice + ", available=" + available + ", stock=" + stock + "]";
 	}
 }

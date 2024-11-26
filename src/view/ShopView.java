@@ -168,7 +168,6 @@ public class ShopView extends JFrame implements ActionListener, KeyListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		this.loadInventory();
 		// TODO Auto-generated method stub
 		if (e.getSource() == btnExportInventory) {
 			this.exportInventory();						
@@ -213,14 +212,6 @@ public class ShopView extends JFrame implements ActionListener, KeyListener{
 		dialog.setModal(true);
 		dialog.setVisible(true);
 	}
-	
-	private void loadInventory() {
-        if (shop.readInventory() == true) {
-            JOptionPane.showMessageDialog(this, "Inventario cargado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "Error cargando el inventario", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
 	
 	private void exportInventory() {
         boolean success = shop.writeInventory();
