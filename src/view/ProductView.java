@@ -163,7 +163,7 @@ public class ProductView extends JDialog implements ActionListener{
 							new Amount(Double.parseDouble(textFieldPrice.getText())) ,
 							true,
 							Integer.parseInt(textFieldStock.getText()));
-					shop.addProduct(product);
+					//shop.addProduct(product);
 					JOptionPane.showMessageDialog(null, "Producto añadido ", "Information",
 							JOptionPane.INFORMATION_MESSAGE);
 					// release current screen

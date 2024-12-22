@@ -34,7 +34,7 @@ public class Shop {
 	public Shop() {
 		inventory = new ArrayList<Product>();
 		sales = new ArrayList<Sale>();
-		dao = new DaoImplJaxb();
+		dao = new DaoImplJDBC();
 	}
 
 	public Amount getCash() {
@@ -81,9 +81,10 @@ public class Shop {
 		Shop shop = new Shop();
 		inventory = shop.dao.getInventory();
 
-		// load inventory from external data
 		shop.loadInventory();
-
+		
+		shop.showInventory();
+		
 		// init session as employee
 		shop.initSession();
 
@@ -216,18 +217,23 @@ public class Shop {
 	/**
 	 * add a new product to inventory getting data from console
 	 */
-	public void addProduct() {
-		if (isInventoryFull()) {
-			System.out.println("No se pueden añadir más productos");
-			return;
-		}
-		Scanner scanner = new Scanner(System.in);
-		System.out.print("Nombre: ");
-		String name = scanner.nextLine();
-		System.out.print("Precio mayorista: ");
-		double wholesalerPrice = scanner.nextDouble();
-		System.out.print("Stock: ");
-		int stock = scanner.nextInt();
+	// Method to add a product
+    public void addProduct() {
+        // Check if inventory is full
+        if (isInventoryFull()) {
+            System.out.println("No more products can be added");
+            return;
+        }
+        // Scanner to read user input
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Name: ");
+        String name = scanner.nextLine();
+        System.out.print("Price: ");
+        double wholesalerPrice = scanner.nextDouble();
+        // Calculate public price based on wholesale price
+        double publicPrice = wholesalerPrice * 2;
+        System.out.print("Stock: ");
+        int stock = scanner.nextInt();
 
 		addProduct(new Product(name, new Amount(wholesalerPrice), true, stock));
 	}

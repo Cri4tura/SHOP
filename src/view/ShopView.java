@@ -71,7 +71,8 @@ public class ShopView extends JFrame implements ActionListener, KeyListener{
 		// create shop
 		shop = new Shop();
 		shop.loadInventory();
-
+	    shop.writeInventory();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 600);
 		contentPane = new JPanel();

@@ -10,8 +10,8 @@ import javax.xml.bind.annotation.XmlType;
 public class Product {
 	private int id;
 	private String name;
-	private Amount publicPrice;
-	private Amount wholesalerPrice;
+	private Amount publicPrice = new Amount(0.0);
+	private Amount wholesalerPrice = new Amount(0.0);
 	private boolean available;
 	private int stock;
 	private static int totalProducts;
@@ -47,17 +47,28 @@ public class Product {
 		this.available = stock > 0; // available dependerá de la cantidad de stock del producto
 	}
 
-	public Product(String name, Amount amount, boolean available, int stock) {
+	public Product(String name, Amount wholesalerPrice, boolean available, int stock) {
 		super();
-		this.id = totalProducts + 1;
 		this.name = name;
-		this.wholesalerPrice = amount;
-		this.publicPrice = new Amount(amount.getValue() * 2);
+		this.wholesalerPrice = wholesalerPrice;
+		this.available = available;
+		this.stock = stock;
+		this.publicPrice = wholesalerPrice;
+		this.id = totalProducts + 1;
+		totalProducts++;
+	}
+	
+	public Product(int id, String name, double wholesalerPrice, boolean available, int stock) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.wholesalerPrice = new Amount(wholesalerPrice);
+		this.publicPrice = new Amount(wholesalerPrice * 2);
 		this.available = available;
 		this.stock = stock;
 		totalProducts++;
 	}
-
+	
 	@XmlAttribute(name = "id")
 	public int getId() {
 		return id;
