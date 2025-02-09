@@ -34,7 +34,7 @@ public class Shop {
 	public Shop() {
 		inventory = new ArrayList<Product>();
 		sales = new ArrayList<Sale>();
-		dao = new DaoImplJDBC();
+		dao = new DaoImplHibernate();
 	}
 
 	public Amount getCash() {
@@ -80,10 +80,6 @@ public class Shop {
 	public static void main(String[] args) {
 		Shop shop = new Shop();
 		inventory = shop.dao.getInventory();
-
-		shop.loadInventory();
-		
-		shop.showInventory();
 		
 		// init session as employee
 		shop.initSession();
