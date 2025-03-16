@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlValue;
 @XmlType(propOrder = { "value", "currency" })
 public class Amount {
 	private double value;	
-	private final String currency="€";
+	private String currency="€";
 	
 	private static final DecimalFormat df = new DecimalFormat("0.00");
 	
@@ -24,6 +24,12 @@ public class Amount {
 	public Amount(double value) {
 		super();
 		this.value = value;
+	}
+	
+	public Amount(double value, String currency) {
+		super();
+		this.value = value;
+		this.currency = currency;
 	}
 
 	@XmlAttribute(name = "currency")
